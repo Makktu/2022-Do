@@ -1,7 +1,22 @@
 import { months, examplesTodo } from "./data.js";
 
-function createNew() {
-    console.log("yep");
+function createNew(toDoText) {
+    let todaysDate =
+        `${new Date().getDate()} ` +
+        `${new Date().toLocaleString("default", { month: "long" })} ` +
+        `${new Date().getFullYear()}` +
+        "";
+
+    let newOne = Object.create(todoList[0]);
+
+    newOne.entry = todoList.length + 1;
+    newOne.date = todaysDate;
+    newOne.content = toDoText;
+
+    todoList.push(newOne);
+
+    sortDates();
+    displayList(todoList);
 }
 
 function displayList(todoList) {
@@ -69,8 +84,6 @@ function sortDates() {
 }
 
 const displayTodos = document.querySelector(".todo-display");
-const createBtn = document.querySelector(".create-new");
-createBtn.addEventListener("click", createNew);
 
 let todoList = examplesTodo;
 
@@ -85,33 +98,42 @@ editBtns.forEach((btn) => {
     });
 });
 
-const modal = document.querySelector("#modal");
-
-const dateToDo = document.getElementById("dateToDo");
 const saveBtn = document.querySelector(".btn-save");
-const theToDo = document.querySelector(".the-todo");
-
-// const openModal = document.querySelector(".open-button");
-const closeModal = document.querySelector(".close-button");
-
-createBtn.addEventListener("click", () => {
-    let todaysDate =
-        `${new Date().getDate()} ` +
-        `${new Date().toLocaleString("default", { month: "long" })} ` +
-        `${new Date().getFullYear()}` +
-        "";
-    modal.showModal();
-    theToDo.value = "";
-    dateToDo.textContent = todaysDate;
-});
-
-closeModal.addEventListener("click", () => {
-    modal.close();
-});
 
 saveBtn.addEventListener("click", () => {
-    let toDoText = theToDo.value;
-    console.log(toDoText);
+    let toDoText = document.getElementById("the-todo").value;
+    document.getElementById("the-todo").value = "";
+    if (toDoText) createNew(toDoText);
     // add date and content to the object array
     // and call refreshed display
 });
+
+// _______________
+
+// let examplesTodo = [
+//     {
+//         entry: 1,
+//         date: "12 May 2022",
+//         content: "Wash Car",
+//     },
+//     {
+//         entry: 2,
+//         date: "15 May 2022",
+//         content: "Pay bills",
+//     },
+//     {
+//         entry: 3,
+//         date: "31 May 2019",
+//         content: "Check council website for that thing",
+//     },
+//     {
+//         entry: 4,
+//         date: "2 June 2022",
+//         content: "Attend the match",
+//     },
+//     {
+//         entry: 5,
+//         date: "19 May 2022",
+//         content: "get Steve's birthday present",
+//     },
+// ];

@@ -18,20 +18,15 @@
     <body>
         <div class="main-container">
             <div class="todo-display"></div>
-            <div class="create-new"><button>New Todo</button></div>
+            <input id="the-todo" placeholder="ENTER NEW TASK" />
+            <div class="create-new">
+                
+                <button class="btn-save">Save</button>
         </div>
 
-        <dialog class="modal" id="modal">
-            <h2>New ToDo</h2>
-            <p><span id="dateToDo"></span></p>
+      
 
-            <label>ToDo: <input class="the-todo" type="text" /></label>
-
-            <button class="close-button">Cancel</button>
-            <button class="btn-save" type="submit">Save</button>
-        </dialog>
-
-        <script type="module" src="script.js"></script>
-        <script type="module" src="data.js"></script>
+        <script defer type="module" src="script.js"></script>
+        <script defer type="module" src="data.js"></script>
     </body>
 </html>
