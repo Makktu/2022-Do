@@ -90,16 +90,6 @@ const modal = document.querySelector("#modal");
 const dateToDo = document.getElementById("dateToDo");
 const saveBtn = document.querySelector(".btn-save");
 const theToDo = document.querySelector(".the-todo");
-saveBtn.addEventListener("click", () => {
-    console.log(theToDo.value);
-    if (theToDo.value) {
-        let toDoText = theToDo.value;
-        console.log(toDoText);
-        modal.closeModal();
-        // add date and content to the object array
-        // and call refreshed display
-    }
-});
 
 // const openModal = document.querySelector(".open-button");
 const closeModal = document.querySelector(".close-button");
@@ -111,9 +101,17 @@ createBtn.addEventListener("click", () => {
         `${new Date().getFullYear()}` +
         "";
     modal.showModal();
+    theToDo.value = "";
     dateToDo.textContent = todaysDate;
 });
 
 closeModal.addEventListener("click", () => {
     modal.close();
+});
+
+saveBtn.addEventListener("click", () => {
+    let toDoText = theToDo.value;
+    console.log(toDoText);
+    // add date and content to the object array
+    // and call refreshed display
 });
