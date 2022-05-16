@@ -48,3 +48,25 @@ button {
     width: 60vw;
     cursor: pointer;
 }
+
+input {
+    font-size: 1.45rem;
+    border: none;
+    background-color: beige;
+}
+
+.modal {
+    padding: 1em;
+    max-width: 70vw;
+    border: 0;
+    box-shadow: 0 0 1em rgb(0 0 0 / 0.3);
+    font-size: 1.45rem;
+
+    /* & > * {
+        margin: 0 0 0.5rem 0;
+    } */
+}
+
+.modal::backdrop {
+    background: rgb(0 0 0 / 0.4);
+}
